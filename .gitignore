@@ -9,6 +9,7 @@ runs/
 
 # Dataset
 pothole-1/
+pothole-small-1/
 
 # Python cache
 __pycache__/

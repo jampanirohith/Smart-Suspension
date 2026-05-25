@@ -12,17 +12,17 @@ def main():
     device = 0 if torch.cuda.is_available() else "cpu"
 
     # ── Load pretrained YOLOv8s ───────────────────────────────────────────
-    model = YOLO("yolov8s.pt")
+    model = YOLO("yolov8n.pt")
 
     # ── Train ─────────────────────────────────────────────────────────────
     results = model.train(
 
         # ── DATA ──────────────────────────────────────────────────────
-        data=r"pothole-1\data.yaml",   # path to your data config
+        data=r"pothole-small-1\data.yaml",   # path to your data config
         imgsz=640,
 
         # ── TRAINING DURATION ─────────────────────────────────────────
-        epochs=10,
+        epochs=1,
         patience=20,
 
         # ── BATCH & COMPUTE ───────────────────────────────────────────
@@ -40,18 +40,18 @@ def main():
         weight_decay=0.0005,
 
         # ── AUGMENTATION ──────────────────────────────────────────────
-        augment=True,
-        hsv_h=0.015,
-        hsv_s=0.7,
-        hsv_v=0.4,
-        flipud=0.0,
-        fliplr=0.5,
-        mosaic=1.0,
-        mixup=0.1,
-        copy_paste=0.0,
+        augment=False,
+        # hsv_h=0.015,
+        # hsv_s=0.7,
+        # hsv_v=0.4,
+        # flipud=0.0,
+        # fliplr=0.5,
+        # mosaic=1.0,
+        # mixup=0.1,
+        # copy_paste=0.0,
 
         # ── OUTPUT & SAVING ───────────────────────────────────────────
-        project="runs",
+        project=r"D:\Github Repositeries\Smart-Suspension\runs\train",
         name="suspension_v1",
         save=True,
         save_period=10,
@@ -67,8 +67,8 @@ def main():
         dfl=1.5,
 
         # ── WARMUP ────────────────────────────────────────────────────
-        warmup_epochs=3,
-        warmup_momentum=0.8,
+        # warmup_epochs=3,
+        # warmup_momentum=0.8,
     )
 
     print("\nTraining complete!")
